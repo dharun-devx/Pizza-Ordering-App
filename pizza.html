@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ember &amp; Crust Pizzeria</title>
+    <link rel="stylesheet" href="pizza.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="logo">🍕 Ember &amp; Crust</div>
+        <ul class="nav-links">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#story">Our Oven</a></li>
+            <li><a href="#visit">Visit</a></li>
+            <li><a href="#cart-section">🛒 Cart <span id="cart-badge" class="cart-badge" style="display:none">0</span></a></li>
+            <li><a href="login.html" id="nav-login-link">Login 🔑</a></li>
+        </ul>
+        <button id="nav-order-btn">Order Now</button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">🔥 Wood-Fired Since 1994</span>
+            <h1>Build Your Own Pizza</h1>
+            <p>
+                Welcome to Ember &amp; Crust! We serve delicious, freshly baked pizzas
+                made with premium ingredients and rich flavors. From classic
+                favorites to exciting new creations, every pizza is prepared fresh
+                for the perfect dining experience.
+            </p>
+            <button class="hero-order-btn" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
+                🍕 Order Now — Deliver in 25 Mins
+            </button>
+        </div>
+    </section>
+
+    <!-- ================= MENU ================= -->
+    <section id="menu" class="section">
+        <h2>Our Menu</h2>
+        <p class="section-sub">Freshly made, fired to perfection — pick your favourite slice!</p>
+
+        <div class="menu-grid">
+
+            <!-- Card 1 -->
+            <div class="card" data-name="Chicken Tikka" data-price="399">
+                <div class="card-img-wrap">
+                    <img
+                        src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&auto=format&fit=crop"
+                        alt="Chicken Tikka Pizza"
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/600x300/b22222/ffffff?text=Chicken+Tikka'"
+                    >
+                    <span class="badge bestseller">🏆 Best Seller</span>
+                </div>
+                <div class="card-body">
+                    <h3>Chicken Tikka</h3>
+                    <p>Spicy marinated chicken chunks, onion, pepper &amp; extra cheese.</p>
+                    <div class="card-footer">
+                        <span class="price">₹399</span>
+                        <button class="order-btn" onclick="addToCart(this)">Add to Cart 🛒</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card" data-name="Margherita" data-price="299">
+                <div class="card-img-wrap">
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&auto=format&fit=crop"
+                        alt="Margherita Pizza"
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/600x300/b22222/ffffff?text=Margherita'"
+                    >
+                    <span class="badge veg">🌿 Pure Veg</span>
+                </div>
+                <div class="card-body">
+                    <h3>Margherita</h3>
+                    <p>Classic tomato sauce, fresh mozzarella &amp; hand-torn basil leaves.</p>
+                    <div class="card-footer">
+                        <span class="price">₹299</span>
+                        <button class="order-btn" onclick="addToCart(this)">Add to Cart 🛒</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card" data-name="Pepperoni" data-price="349">
+                <div class="card-img-wrap">
+                    <img
+                        src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&auto=format&fit=crop"
+                        alt="Pepperoni Pizza"
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/600x300/b22222/ffffff?text=Pepperoni'"
+                    >
+                    <span class="badge spicy">🌶️ Spicy</span>
+                </div>
+                <div class="card-body">
+                    <h3>Pepperoni</h3>
+                    <p>Loaded pepperoni slices, mozzarella &amp; a drizzle of chili honey.</p>
+                    <div class="card-footer">
+                        <span class="price">₹349</span>
+                        <button class="order-btn" onclick="addToCart(this)">Add to Cart 🛒</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card" data-name="Veggie Delight" data-price="249">
+                <div class="card-img-wrap">
+                    <img
+                        src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=600&auto=format&fit=crop"
+                        alt="Veggie Delight Pizza"
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/600x300/228B22/ffffff?text=Veggie+Delight'"
+                    >
+                    <span class="badge veg">🌿 Pure Veg</span>
+                </div>
+                <div class="card-body">
+                    <h3>Veggie Delight</h3>
+                    <p>Pesto base, zucchini, cherry tomato, bell peppers &amp; rocket arugula.</p>
+                    <div class="card-footer">
+                        <span class="price">₹249</span>
+                        <button class="order-btn" onclick="addToCart(this)">Add to Cart 🛒</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card" data-name="Spicy Delight" data-price="299">
+                <div class="card-img-wrap">
+                    <img
+                        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop"
+                        alt="Spicy Delight Pizza"
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/600x300/b22222/ffffff?text=Spicy+Delight'"
+                    >
+                    <span class="badge spicy">🌶️ Extra Hot</span>
+                </div>
+                <div class="card-body">
+                    <h3>Spicy Delight</h3>
+                    <p>Jalapeños, red chili flakes, sriracha drizzle &amp; smoky chipotle sauce.</p>
+                    <div class="card-footer">
+                        <span class="price">₹299</span>
+                        <button class="order-btn" onclick="addToCart(this)">Add to Cart 🛒</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card" data-name="BBQ Chicken" data-price="379">
+                <div class="card-img-wrap">
+                    <img
+                        src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600&auto=format&fit=crop"
+                        alt="BBQ Chicken Pizza"
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/600x300/8B4513/ffffff?text=BBQ+Chicken'"
+                    >
+                    <span class="badge new">✨ New</span>
+                </div>
+                <div class="card-body">
+                    <h3>BBQ Chicken</h3>
+                    <p>Smoky BBQ sauce, grilled chicken strips, red onions &amp; cheddar blend.</p>
+                    <div class="card-footer">
+                        <span class="price">₹379</span>
+                        <button class="order-btn" onclick="addToCart(this)">Add to Cart 🛒</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= CART ================= -->
+    <section id="cart-section" class="section">
+        <h2>🛒 Your Cart</h2>
+
+        <div id="cart-items">
+            <div class="empty-cart-box">
+                <div class="empty-icon">🍕</div>
+                <p>Your cart is empty.</p>
+                <small>Add some delicious pizzas from the menu above!</small>
+            </div>
+        </div>
+
+        <div class="cart-summary" id="cart-summary" style="display:none">
+            <div class="cart-total-row">
+                <span>Subtotal</span>
+                <span>₹<span id="cart-subtotal">0</span></span>
+            </div>
+            <div class="cart-total-row">
+                <span>Delivery</span>
+                <span class="free-delivery">FREE 🚀</span>
+            </div>
+            <div class="cart-total-row total-final">
+                <strong>Total</strong>
+                <strong>₹<span id="cart-total">0</span></strong>
+            </div>
+            <div class="cart-actions">
+                <button id="clear-cart">🗑️ Clear Cart</button>
+                <button id="checkout-btn" onclick="handleCheckout()">✅ Place Order</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ================= OUR OVEN ================= -->
+    <section id="story" class="section">
+        <h2>Our Oven</h2>
+        <p>
+            Our wood-fired oven runs at 900°F and cooks every pizza in under 2
+            minutes. It's been firing pizzas since 1994.
+        </p>
+    </section>
+
+    <!-- ================= VISIT ================= -->
+    <section id="visit" class="section">
+        <h2>Visit Us</h2>
+        <p>📍 RS Puram, Coimbatore</p>
+        <p>Mon–Thu : 11:30 AM – 9:00 PM</p>
+        <p>Fri–Sat : 11:30 AM – 10:30 PM</p>
+        <p>Sunday : 12:00 PM – 8:00 PM</p>
+        <p>📞 +91 97886 54370</p>
+        <button id="visit-order-btn">Order Now</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ember &amp; Crust | Designed by Chickentharani</p>
+    </footer>
+
+    <!-- Order Success Modal -->
+    <div id="orderModal" class="modal-overlay" style="display:none">
+        <div class="modal-box">
+            <div class="modal-anim">🎉</div>
+            <h3>Order Placed!</h3>
+            <p id="modal-msg">Your delicious pizza is being prepared!</p>
+            <p class="eta">🚀 Estimated Delivery: <strong>25–30 mins</strong></p>
+            <button onclick="closeOrderModal()">Continue Ordering 🍕</button>
+        </div>
+    </div>
+
+    <script src="pizza.js"></script>
+</body>
+</html>
